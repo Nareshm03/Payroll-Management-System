@@ -1,0 +1,149 @@
+/**
+ * PayrollPulse Premium Animations
+ * Inspired by Stripe, Linear, and Framer
+ */
+
+/* ===== Keyframes ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Card Animations ===== */
+.animate-card {
+  animation: fadeIn 400ms ease-out forwards;
+  opacity: 0;
+}
+
+.animate-card:nth-child(1) { animation-delay: 0ms; }
+.animate-card:nth-child(2) { animation-delay: 50ms; }
+.animate-card:nth-child(3) { animation-delay: 100ms; }
+.animate-card:nth-child(4) { animation-delay: 150ms; }
+.animate-card:nth-child(5) { animation-delay: 200ms; }
+.animate-card:nth-child(6) { animation-delay: 250ms; }
+
+/* ===== Hover Effects ===== */
+.hover-lift {
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+  will-change: transform, box-shadow;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.hover-scale {
+  transition: transform 200ms ease-out;
+  will-change: transform;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* ===== Button Transitions ===== */
+.btn-transition {
+  transition: all 200ms ease-out;
+  will-change: background-color, color, box-shadow;
+}
+
+.btn-transition:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-transition:active {
+  transform: scale(0.98);
+  transition-duration: 100ms;
+}
+
+/* ===== Table Row Animations ===== */
+.table-row-animate {
+  transition: background-color 250ms ease-out, transform 150ms ease-out;
+  cursor: pointer;
+}
+
+.table-row-animate:hover {
+  background-color: #f7f8fa !important;
+  transform: translateX(2px);
+}
+
+/* ===== Icon Button Animations ===== */
+.icon-btn-animate {
+  transition: all 150ms ease-out;
+  will-change: background-color, transform;
+}
+
+.icon-btn-animate:hover {
+  transform: scale(1.1);
+}
+
+.icon-btn-animate:active {
+  transform: scale(0.95);
+}
+
+/* ===== Sidebar Animations ===== */
+.sidebar-item-animate {
+  transition: all 200ms ease-out;
+  will-change: background-color, transform;
+}
+
+.sidebar-item-animate:hover {
+  transform: translateX(2px);
+}
+
+/* ===== Modal Animations ===== */
+.modal-animate {
+  animation: fadeInScale 300ms ease-out;
+}
+
+/* ===== Badge Animations ===== */
+.badge-animate {
+  transition: transform 150ms ease-out;
+}
+
+.badge-animate:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Accessibility: Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hover-lift:hover,
+  .hover-scale:hover,
+  .sidebar-item-animate:hover,
+  .table-row-animate:hover {
+    transform: none;
+  }
+}
+
+/* ===== Performance Optimization ===== */
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}

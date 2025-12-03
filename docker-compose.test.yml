@@ -1,0 +1,29 @@
+version: '3.8'
+
+# Testing configuration for CI/CD
+
+services:
+  backend-test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: pytest -v --cov=app --cov-report=term-missing
+    environment:
+      - DATABASE_URL=sqlite:///./test.db
+      - SECRET_KEY=test-secret-key
+    networks:
+      - test-network
+
+  frontend-test:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    command: npm test -- --coverage --watchAll=false
+    environment:
+      - CI=true
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

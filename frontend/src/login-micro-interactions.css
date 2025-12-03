@@ -1,0 +1,230 @@
+/* Comprehensive Micro-Interaction System for Login Page */
+
+/* Validation States & Animations */
+.input-wrapper.error .input-field {
+  border-color: var(--error);
+  animation: borderPulse 600ms ease-in-out;
+}
+
+.input-wrapper.error .input-icon {
+  color: var(--error);
+  animation: iconShake 400ms ease-in-out;
+}
+
+.input-wrapper.success .input-field {
+  border-color: var(--success);
+}
+
+.input-wrapper.success .input-icon {
+  color: var(--success);
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: var(--error); }
+  50% { 
+    border-color: var(--error); 
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1); 
+  }
+}
+
+@keyframes iconShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Validation Icons */
+.validation-icon {
+  position: absolute;
+  right: 48px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.error-icon {
+  color: var(--error);
+  animation: fadeInScale 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.success-icon {
+  color: var(--success);
+  animation: successPop 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes successPop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Error Messages */
+.error-message {
+  display: block;
+  color: var(--error);
+  font-size: 13px;
+  margin-top: 6px;
+  animation: slideDown 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Password Toggle */
+.password-toggle {
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.password-toggle:hover {
+  background: var(--hover-overlay);
+  transform: scale(1.1);
+}
+
+.password-toggle:active {
+  transform: scale(0.95);
+}
+
+.password-toggle.active svg {
+  animation: rotateIcon 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes rotateIcon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(180deg); }
+}
+
+/* Input Hover Effects */
+.input-field:hover:not(:focus) {
+  transform: scale(1.005);
+  border-color: var(--border-secondary);
+}
+
+/* Enhanced Button Interactions */
+.login-button:active:not(:disabled) {
+  transform: translateY(0) scale(0.95);
+  transition: all 100ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+.login-button:active::after {
+  animation: ripple 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced Error Animation */
+.login-error {
+  animation: errorSlideIn 300ms cubic-bezier(0.4, 0, 0.2, 1), shake 400ms ease-in-out 300ms;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Interactive Links */
+.forgot-link,
+.footer-link {
+  position: relative;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forgot-link::after,
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-600);
+  transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forgot-link:hover,
+.footer-link:hover {
+  transform: translateX(2px);
+}
+
+.forgot-link:hover::after,
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Remember Me Interactions */
+.remember-me {
+  transition: transform 150ms ease-out;
+}
+
+.remember-me:hover {
+  transform: scale(1.02);
+}
+
+.checkbox-input:hover {
+  transform: scale(1.1);
+}
+
+.remember-me:hover .checkbox-label {
+  color: var(--text-primary);
+}
+
+/* Touch Feedback for Mobile */
+@media (hover: none) and (pointer: coarse) {
+  .login-button:active:not(:disabled) {
+    transform: scale(0.96);
+    transition: transform 150ms ease-out;
+  }
+  
+  .input-field:focus {
+    transform: none;
+  }
+  
+  .password-toggle:active {
+    transform: scale(0.9);
+  }
+}
