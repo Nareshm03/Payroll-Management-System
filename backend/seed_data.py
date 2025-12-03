@@ -1,9 +1,11 @@
 import asyncio
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
-from database import engine, Base, SessionLocal
-from models import User, SalarySlip, Expense, UserRole, ExpenseStatus
-from auth import get_password_hash
+from app.utils.database import engine, Base, SessionLocal
+from app.models.user import User
+from app.models.salary_slip import SalarySlip
+from app.models.expense import Expense
+from app.utils.auth import get_password_hash
 
 async def seed_database():
     """Seed the database with sample data"""
